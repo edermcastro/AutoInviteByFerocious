@@ -2,6 +2,7 @@
 ## Title: AutoInviteByFerocious
 ## Notes: Auto-invite com Interface e Ícone no Minimapa, desenvolvido por EMC - Linformatica Co.
 ## SavedVariables: AIM_Config, AIM_DBIcon
+## IconTexture: Interface\Icons\INV_Misc_GroupNeedMore
 
 # Bibliotecas
 Libs\LibStub\LibStub.lua

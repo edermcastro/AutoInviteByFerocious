@@ -67,53 +67,9 @@ gui.author:SetText("Desenvolvido por: |cFFFFD100Eder Moraes - Ferocioüs|r")
 local closeBtn = CreateFrame("Button", nil, gui, "UIPanelCloseButton")
 closeBtn:SetPoint("TOPRIGHT", gui, "TOPRIGHT")
 
--- -- 2. Criação da Janela de Configuração (UI Customizada)
--- local gui = CreateFrame("Frame", "AIM_SettingsFrame", UIParent, "BackdropTemplate")
--- gui:SetSize(300, 120)
--- gui:SetPoint("CENTER")
--- gui:SetMovable(true)
--- gui:EnableMouse(true)
--- gui:RegisterForDrag("LeftButton")
--- gui:SetScript("OnDragStart", gui.StartMoving)
--- gui:SetScript("OnDragStop", gui.StopMovingOrSizing)
--- gui:SetBackdrop({
---     bgFile = "Interface\\ChatFrame\\ChatFrameBackground",
---     edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
---     tile = true, tileSize = 16, edgeSize = 16,
---     insets = { left = 4, right = 4, top = 4, bottom = 4 }
--- })
--- gui:SetBackdropColor(0, 0, 0, 0.9)
--- gui:Hide() -- Começa escondida
-
--- -- Título
--- gui.title = gui:CreateFontString(nil, "OVERLAY", "GameFontNormal")
--- gui.title:SetPoint("TOP", 0, -10)
--- gui.title:SetText("AutoInvite Midnight - Palavra chave?")
-
--- -- Campo de Texto (EditBox)
--- local editBox = CreateFrame("EditBox", nil, gui, "InputBoxTemplate")
--- editBox:SetSize(180, 20)
--- editBox:SetPoint("CENTER", 0, 0)
--- editBox:SetAutoFocus(false)
--- editBox:SetText(AIM_Config.keyword)
-
--- -- Botão Salvar
--- local saveBtn = CreateFrame("Button", nil, gui, "GameMenuButtonTemplate")
--- saveBtn:SetSize(80, 25)
--- saveBtn:SetPoint("BOTTOM", 0, 10)
--- saveBtn:SetText("Salvar")
--- saveBtn:SetScript("OnClick", function()
---     AIM_Config.keyword = editBox:GetText()
---     print("|cFF00FF00[AutoInvite]|r Palavra-chave salva: |cFFFFFF00" .. AIM_Config.keyword)
---     gui:Hide()
--- end)
-
--- -- Botão Fechar (X)
--- local closeBtn = CreateFrame("Button", nil, gui, "UIPanelCloseButton")
--- closeBtn:SetPoint("TOPRIGHT", gui, "TOPRIGHT")
 
 -- 3. LDB e Ícone do Minimapa
-local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("AutoInviteMidnight", {
+local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("AutoInviteByFerocious", {
     type = "launcher",
     text = "AutoInvite",
     icon = "Interface\\Icons\\INV_Misc_GroupNeedMore",
@@ -188,11 +144,11 @@ local function TryInvite(msg, senderName, isBN, bnetAccountID)
 end
 
 frame:SetScript("OnEvent", function(self, event, ...)
-    if event == "ADDON_LOADED" and ... == "AutoInviteMidnight" then
+    if event == "ADDON_LOADED" and ... == "AutoInviteByFerocious" then
         -- (A Lógica de inicialização da GUI e Ícone continua aqui...)
         if not AIM_Config then AIM_Config = { keyword = "inv", enabled = true } end
         if not AIM_DBIcon then AIM_DBIcon = {} end
-        icon:Register("AutoInviteMidnight", LDB, AIM_DBIcon)
+        icon:Register("AutoInviteByFerocious", LDB, AIM_DBIcon)
         editBox:SetText(AIM_Config.keyword)
 
     elseif event == "CHAT_MSG_WHISPER" then
